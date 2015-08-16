@@ -49,7 +49,7 @@ function open_db() {
 			return TRUE;
 	}
 
-	$a_configs = [];
+	$a_configs = array();
 	$filename = dirname(__FILE__)."/mysql_config.ini";
 	if (file_exists($filename)) {
 		$a_configs = parse_ini_file($filename);

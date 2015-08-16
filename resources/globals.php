@@ -23,7 +23,7 @@ function define_global_vars() {
 	$global_loaded_server_settings = FALSE;
 	$mysqli = NULL;
 
-	$a_configs = [];
+	$a_configs = array();
 	$filename = dirname(__FILE__) . "/server_config.ini";
 	if (file_exists($filename)) {
 		$a_configs = parse_ini_file($filename);
