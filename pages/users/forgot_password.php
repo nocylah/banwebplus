@@ -21,7 +21,7 @@ function draw_forgot_password_page() {
 			var jselect = $(select_element);
 			var option = jselect.val().toLowerCase();
 			var all = $(".credential_type");
-			var others = [];
+			var others = array();
 			var joption = $("#"+option);
 
 			// get a list of the other options and store values
