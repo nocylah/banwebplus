@@ -159,7 +159,7 @@ def getTerm(semester, subjects, parser):
 		url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+t.getSemester()+"&p_subj="+subjectName.replace(" ", "%20")
 		print url
 		page = urllib2.urlopen(url)
-		soup = BeautifulSoup(page)
+		soup = BeautifulSoup(page, "html.parser")
 		trs = soup.findAll("tr")
 		trs = trs[1:] #discard the retarded row that banweb is retarded about
 		print_verbose("adding subject "+subjectName)
