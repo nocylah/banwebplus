@@ -21,7 +21,8 @@ def writeSelectToFile(selectArray, filename, path, title):
 	f.write(title+" = [['")
 	optionStrings = []
 	for optionParts in selectArray:
-		optionStrings.append("','".join(optionParts))
+		sanitizedParts = [ p.replace('"', '\\"').replace("'", "\\'") for p in optionParts ]
+		optionStrings.append("','".join(sanitizedParts))
 	f.write("'],\n\t['".join(optionStrings))
 	f.write("']]")
 	f.close()
@@ -178,7 +179,7 @@ def main(parser):
 
 	page = urllib2.urlopen(url)
 	
-	soup = BeautifulSoup(page)
+	soup = BeautifulSoup(page, "html.parser")
 
 	path = ""
 	if (type(parser.path) == type("")):
