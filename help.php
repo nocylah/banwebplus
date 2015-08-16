@@ -34,7 +34,7 @@ function draw_jquery($block_style) {
 			This page will not work very will until jquery has been set up.<br />
 			To use jquery, create a file in
 			<div style='display:inline-block; font-family:monospace;'>
-				/some/path/banwebplus/server_config.ini
+				/some/path/banwebplus/resources/server_config.ini
 			</div>
 			with the following line:<br />
 			<div style='display:inline-block; font-family:monospace;'>
