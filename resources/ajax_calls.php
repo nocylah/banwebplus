@@ -405,7 +405,7 @@ if ($s_command != '') {
 			
 			// build the list of commands and what to say to the guest
 			$sgc = json_encode(array(new command("failure", "")));
-			$no_nos = [];
+			$no_nos = array();
 			$no_nos_base = array(
 				array('save_classes', 'load_user_classes', 
 					json_encode(array(new command("failure", "Guest can't save classes")))),

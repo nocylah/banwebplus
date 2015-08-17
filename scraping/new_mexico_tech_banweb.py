@@ -21,7 +21,8 @@ def writeSelectToFile(selectArray, filename, path, title):
 	f.write(title+" = [['")
 	optionStrings = []
 	for optionParts in selectArray:
-		optionStrings.append("','".join(optionParts))
+		sanitizedParts = [ p.replace('"', '\\"').replace("'", "\\'") for p in optionParts ]
+		optionStrings.append("','".join(sanitizedParts))
 	f.write("'],\n\t['".join(optionStrings))
 	f.write("']]")
 	f.close()
@@ -158,7 +159,7 @@ def getTerm(semester, subjects, parser):
 		url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+t.getSemester()+"&p_subj="+subjectName.replace(" ", "%20")
 		print url
 		page = urllib2.urlopen(url)
-		soup = BeautifulSoup(page)
+		soup = BeautifulSoup(page, "lxml")
 		trs = soup.findAll("tr")
 		trs = trs[1:] #discard the retarded row that banweb is retarded about
 		print_verbose("adding subject "+subjectName)
@@ -178,7 +179,7 @@ def main(parser):
 
 	page = urllib2.urlopen(url)
 	
-	soup = BeautifulSoup(page)
+	soup = BeautifulSoup(page, "lxml")
 
 	path = ""
 	if (type(parser.path) == type("")):
