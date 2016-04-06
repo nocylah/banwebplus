@@ -34,7 +34,7 @@ function draw_jquery($block_style) {
 			This page will not work very will until jquery has been set up.<br />
 			To use jquery, create a file in
 			<div style='display:inline-block; font-family:monospace;'>
-				/some/path/banwebplus/resources/server_config.ini
+				/some/path/beanwebplus/resources/server_config.ini
 			</div>
 			with the following line:<br />
 			<div style='display:inline-block; font-family:monospace;'>
@@ -131,11 +131,11 @@ function draw_status_code($block_style) {
 
 		echo "<div id='ini_status' style='padding:0; margin:0;'>\n";
 		echo "${info_div} class='server_config'>Ensure that the file
-			/some/path/banwebplus/resources/server_config.ini exists, is readable
+			/some/path/beanwebplus/resources/server_config.ini exists, is readable
 			by the Apache server, and is formatted correctly.<br />
 			Example file:
 			{$codebox}
-				maindb = \"banwebplus\"<br />
+				maindb = \"beanwebplus\"<br />
 				global_path_to_jquery = \"/jquery/js/jquery-1.9.0.js\"<br />
 				timezone = \"America/Denver\"<br />
 			</div>
@@ -144,7 +144,7 @@ function draw_status_code($block_style) {
 			<b>timezone</b> is your timezone.
 			</div>\n";
 		echo "${info_div} class='mysql_config'>Ensure that the file
-			/some/path/banwebplus/resources/mysql_config.ini exists, is readable
+			/some/path/beanwebplus/resources/mysql_config.ini exists, is readable
 			by the Apache server, and is formatted correctly.<br />
 			Example file:
 			{$codebox}
@@ -160,8 +160,8 @@ function draw_status_code($block_style) {
 			To set up an example MySQL database and user, you can run the following commands:
 			{$codebox}
 				CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';<br />
-				CREATE DATABASE banwebplus;<br />
-				GRANT ALL ON `banwebplus`.* to 'user'@'localhost';
+				CREATE DATABASE beanwebplus;<br />
+				GRANT ALL ON `beanwebplus`.* to 'user'@'localhost';
 			</div>
 			More information on using MySQL can be found
 			<a href='http://www.mysqltutorial.org/basic-mysql-tutorial.aspx' target='_blank'>here</a>.
