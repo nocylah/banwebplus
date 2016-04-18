@@ -13,7 +13,7 @@ def read_config():
             string += file.read().replace('"', '')
 
     config = configparser.ConfigParser()
-    config.read_string(config_string)
+    config.read_string(string)
     return config
 
 class BaseModel(Model):
