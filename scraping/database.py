@@ -2,17 +2,26 @@ import configparser
 import pymysql
 from peewee import *
 
-config_path = "../resources/mysql_config.ini"
-db_name = "beanwebplus"
-config = configparser.ConfigParser()
-config.read_string("[DB]\n" + open(config_path).read().replace('"',""))
-config = config["DB"]
+CONFIG_PATH = "../resources/"
+CONFIG_FILES = [("[SQL]", "mysql_config.ini"), ("[SRV]", "server_config.ini")]
+
+def read_config():
+    string = ""
+    for pair in CONFIG_FILES:
+        with open(CONFIG_PATH + pair[1], 'r') as file:
+            string += pair[0] + "\n"
+            string += file.read().replace('"', '')
+
+    config = configparser.ConfigParser()
+    config.read_string(config_string)
+    return config
 
 class BaseModel(Model):
     class Meta:
-        database = MySQLDatabase(db_name,
-                                 **{"password": config["password"],
-                                    "user": config["user"]})
+        config = read_config()
+        database = MySQLDatabase(config["SRV"]["maindb"],
+                                 **{"password": config["SQL"]["password"],
+                                    "user": config["SQL"]["user"]})
 
 class Classes(BaseModel):
     campus = CharField(null=False)
